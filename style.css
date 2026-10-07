@@ -735,3 +735,6 @@ section.vsec:target, section.piyut-box:target { animation: target-flash 2.4s eas
 .lineup-row img { flex: 0 1 auto; width: calc((100% - 11 * clamp(6px, 1.2vw, 18px)) / 12); max-width: 118px; height: auto; filter: drop-shadow(0 8px 10px rgba(40, 30, 20, .22)); }
 @media (max-width: 700px) { .lineup-row { flex-wrap: wrap; row-gap: 14px; } .lineup-row img { width: calc((100% - 5 * 8px) / 6); } }
 .ship-note { margin: 8px 0 0; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 15px; font-weight: 400; color: var(--muted); }
+/* riddle lines centred, as in the printed booklets */
+.riddle .rd-body, .riddle .rd-body p { text-align: center; }
+.riddle .rd-hint { text-align: center; }
