@@ -1,0 +1,1 @@
+window.SEARCH_FILES=["bereshit", "noach", "lech", "vayera", "chayei", "toldot", "vayetze", "vayishlach", "vayeshev", "moriah", "hoshanot-a", "hoshanot-b", "haggada", "menorat-zahav", "achuda-na"];

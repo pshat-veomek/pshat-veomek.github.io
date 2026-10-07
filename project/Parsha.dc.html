@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>דף פרשה</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&amp;family=Assistant:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F0E6}
+a{color:#7A3E22}a:hover{color:#5A2B16}
+</style>
+</helmet>
+<div dir="rtl" style="font-family: 'Assistant', sans-serif; color: #1F232B; background: #F5F0E6; min-height: 100vh">
+
+<header style="background: #1F2A30; color: #F5F0E6; position: relative; z-index: 2">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; min-height: 76px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="Main.dc.html" style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 700; color: #F5F0E6; text-decoration: none; padding: 10px 0">פשט ועומק במקרא</a>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Main.dc.html" style="color: #E3D6BF; text-decoration: none; font-size: 17px; padding: 12px 14px">דף הבית</a>
+<a href="Books.dc.html" style="color: #F5F0E6; text-decoration: none; font-size: 17px; font-weight: 600; padding: 12px 14px; border-bottom: 2px solid #D9A066">תוכן הספרים</a>
+<a href="Order.dc.html" style="color: #E3D6BF; text-decoration: none; font-size: 17px; padding: 12px 14px">הזמנת ספרים</a>
+</nav>
+</div>
+</header>
+
+<section style="position: sticky; top: 0; z-index: 0; height: 440px; background: #2F4A52; color: #F5F0E6; overflow: hidden">
+<div style="max-width: 1200px; height: 100%; margin: 0 auto; padding: 0 24px; box-sizing: border-box; display: flex; align-items: center; gap: 48px">
+<div style="position: relative; flex: 0 0 auto; width: 220px; aspect-ratio: 2 / 3; background: #3B5C66; border-radius: 3px 8px 8px 3px; box-shadow: 0 18px 40px rgba(0,0,0,0.35), inset -6px 0 0 rgba(0,0,0,0.2)">
+<div style="position: absolute; inset: 10px; border: 1px solid rgba(245,240,230,0.45); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 22px 12px; text-align: center">
+<span style="font-size: 13px; letter-spacing: 0.08em">פשט ועומק במקרא</span>
+<span style="font-family: 'Frank Ruhl Libre', serif; font-size: 34px; font-weight: 700">בראשית</span>
+<span style="font-size: 12px; opacity: 0.8">[תמונת הכריכה]</span>
+</div>
+</div>
+<div style="min-width: 0">
+<nav aria-label="מיקום באתר" style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 16px; color: #C9D6D5; margin-bottom: 14px">
+<a href="Books.dc.html" style="color: #C9D6D5">תוכן הספרים</a><span>›</span><span>חומש בראשית</span>
+</nav>
+<h1 style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: 64px; font-weight: 900; line-height: 1.05">פרשת בראשית</h1>
+<p style="margin: 16px 0 0; font-size: 20px; color: #DDE6E4">בראשית א, א – ו, ח · 6 שערים</p>
+</div>
+</div>
+</section>
+
+<main style="position: relative; z-index: 1; background: #F5F0E6; border-radius: 20px 20px 0 0; box-shadow: 0 -12px 30px rgba(20,28,32,0.18); margin-top: -20px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 96px; box-sizing: border-box">
+<h2 style="margin: 0 0 8px; font-family: 'Frank Ruhl Libre', serif; font-size: 36px; font-weight: 700">שערי הספר</h2>
+<p style="margin: 0 0 32px; font-size: 18px; color: #5B5650">בחרו שער כדי לקרוא את הביאור ולנווט בין הפסוקים.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px">
+<sc-for list="{{shearim}}" as="s" hint-placeholder-count="6">
+<a href="Reader.dc.html" style="display: flex; gap: 20px; align-items: flex-start; padding: 24px; background: #FBF8F2; border: 1px solid #DDD2BE; border-radius: 6px; color: #1F232B; text-decoration: none; min-height: 44px">
+<span style="flex: 0 0 auto; width: 52px; height: 52px; border-radius: 50%; background: #2F4A52; color: #F5F0E6; display: flex; align-items: center; justify-content: center; font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700">{{s.letter}}</span>
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+<span style="font-size: 15px; color: #7A3E22; font-weight: 600">שער {{s.letter}}</span>
+<span style="font-family: 'Frank Ruhl Libre', serif; font-size: 25px; font-weight: 700; line-height: 1.25">{{s.title}}</span>
+<span style="font-size: 16px; color: #5B5650">{{s.range}}</span>
+</span>
+</a>
+</sc-for>
+</div>
+</div>
+</main>
+
+<footer style="position: relative; z-index: 1; background: #172024; color: #B9AE9C">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 16px">
+<span>פשט ועומק במקרא</span>
+<span>[פרטי יצירת קשר]</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1600}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+shearim: [
+{ letter: 'א', title: 'בריאת העולם', range: 'בראשית א, א – ב, ג' },
+{ letter: 'ב', title: 'גן עדן', range: 'בראשית ב, ד – כה' },
+{ letter: 'ג', title: 'חטא עץ הדעת', range: 'בראשית ג, א – כד' },
+{ letter: 'ד', title: 'קין והבל', range: 'בראשית ד, א – כו' },
+{ letter: 'ה', title: 'תולדות האדם', range: 'בראשית ה, א – לב' },
+{ letter: 'ו', title: 'בני האלהים', range: 'בראשית ו, א – ח' }
+]
+};
+}
+}
+</script>
+</body>
+</html>

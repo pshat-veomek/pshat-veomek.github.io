@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>טקסט הספר</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&amp;family=Assistant:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F0E6}
+a{color:#7A3E22}a:hover{color:#5A2B16}
+html{scroll-behavior:smooth}
+</style>
+</helmet>
+<div dir="rtl" style="font-family: 'Assistant', sans-serif; color: #1F232B; background: #F5F0E6; min-height: 100vh">
+
+<header style="background: #1F2A30; color: #F5F0E6; position: relative; z-index: 2">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; min-height: 76px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="Main.dc.html" style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 700; color: #F5F0E6; text-decoration: none; padding: 10px 0">פשט ועומק במקרא</a>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Main.dc.html" style="color: #E3D6BF; text-decoration: none; font-size: 17px; padding: 12px 14px">דף הבית</a>
+<a href="Books.dc.html" style="color: #F5F0E6; text-decoration: none; font-size: 17px; font-weight: 600; padding: 12px 14px; border-bottom: 2px solid #D9A066">תוכן הספרים</a>
+<a href="Order.dc.html" style="color: #E3D6BF; text-decoration: none; font-size: 17px; padding: 12px 14px">הזמנת ספרים</a>
+</nav>
+</div>
+</header>
+
+<section style="position: sticky; top: 0; z-index: 0; height: 300px; background: #2F4A52; color: #F5F0E6; overflow: hidden">
+<div style="max-width: 1200px; height: 100%; margin: 0 auto; padding: 0 24px; box-sizing: border-box; display: flex; align-items: center; gap: 36px">
+<div style="position: relative; flex: 0 0 auto; width: 150px; aspect-ratio: 2 / 3; background: #3B5C66; border-radius: 3px 7px 7px 3px; box-shadow: 0 14px 32px rgba(0,0,0,0.35), inset -5px 0 0 rgba(0,0,0,0.2)">
+<div style="position: absolute; inset: 8px; border: 1px solid rgba(245,240,230,0.45); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 14px 8px; text-align: center">
+<span style="font-size: 10px; letter-spacing: 0.08em">פשט ועומק במקרא</span>
+<span style="font-family: 'Frank Ruhl Libre', serif; font-size: 24px; font-weight: 700">בראשית</span>
+<span style="font-size: 10px; opacity: 0.8">[תמונת הכריכה]</span>
+</div>
+</div>
+<div style="min-width: 0">
+<nav aria-label="מיקום באתר" style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 16px; color: #C9D6D5; margin-bottom: 12px">
+<a href="Books.dc.html" style="color: #C9D6D5">תוכן הספרים</a><span>›</span><a href="Parsha.dc.html" style="color: #C9D6D5">פרשת בראשית</a><span>›</span><span>שער א</span>
+</nav>
+<h1 style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: 52px; font-weight: 900; line-height: 1.1">שער א · בריאת העולם</h1>
+<p style="margin: 12px 0 0; font-size: 19px; color: #DDE6E4">בראשית א, א – ב, ג</p>
+</div>
+</div>
+</section>
+
+<main style="position: relative; z-index: 1; background: #F5F0E6; border-radius: 20px 20px 0 0; box-shadow: 0 -12px 30px rgba(20,28,32,0.18); margin-top: -20px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 96px; box-sizing: border-box">
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 20px; background: #FBF8F2; border: 1px solid #DDD2BE; border-radius: 6px">
+<div style="flex: 999 1 560px; min-width: 0">
+<div style="font-size: 15px; font-weight: 700; color: #5B5650; margin-bottom: 10px">ניווט לפי פסוקים · פרק א</div>
+<nav aria-label="פסוקים" style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{verses}}" as="v" hint-placeholder-count="31">
+<a href="#{{v.anchor}}" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 44px; padding: 0 6px; box-sizing: border-box; border: 1px solid #CFC3AE; border-radius: 4px; color: #1F2A30; text-decoration: none; font-family: 'Frank Ruhl Libre', serif; font-size: 18px; background: #F5F0E6">{{v.label}}</a>
+</sc-for>
+</nav>
+</div>
+<div style="flex: 1 1 180px; display: flex; flex-direction: column; gap: 10px">
+<div style="font-size: 15px; font-weight: 700; color: #5B5650">גודל הטקסט</div>
+<div style="display: flex; gap: 6px">
+<button type="button" onClick="{{smaller}}" aria-label="הקטנת הטקסט" style="min-width: 48px; height: 44px; border: 1px solid #1F2A30; background: #F5F0E6; color: #1F2A30; border-radius: 4px; font-family: 'Frank Ruhl Libre', serif; font-size: 16px; cursor: pointer">א־</button>
+<button type="button" onClick="{{reset}}" aria-label="גודל רגיל" style="min-width: 48px; height: 44px; border: 1px solid #1F2A30; background: #F5F0E6; color: #1F2A30; border-radius: 4px; font-family: 'Frank Ruhl Libre', serif; font-size: 19px; cursor: pointer">א</button>
+<button type="button" onClick="{{larger}}" aria-label="הגדלת הטקסט" style="min-width: 48px; height: 44px; border: 1px solid #1F2A30; background: #1F2A30; color: #F5F0E6; border-radius: 4px; font-family: 'Frank Ruhl Libre', serif; font-size: 23px; cursor: pointer">א+</button>
+</div>
+</div>
+</div>
+
+<article style="{{articleStyle}}">
+
+<section id="v-1" style="padding-top: 48px">
+<h2 style="margin: 0 0 6px; font-family: 'Assistant', sans-serif; font-size: 0.75em; font-weight: 700; color: #7A3E22">פסוק א</h2>
+<p style="margin: 0 0 22px; padding: 18px 22px; background: #E9E0CE; border-radius: 4px; font-size: 1.25em; line-height: 1.7; font-weight: 500">בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ.</p>
+<h3 style="margin: 0 0 10px; font-size: 1.15em; font-weight: 700">[כותרת משנה מתוך הספר]</h3>
+<p style="margin: 0 0 18px">[כאן ייכנס ביאור הספר לפסוק זה, כפי שהוא מופיע ב־PDF — כולל דברי חז״ל, הפרשנים וההצעות החדשות]<sup><a href="#fn-1" id="ref-1" style="text-decoration: none; font-family: 'Assistant', sans-serif; font-size: 0.7em; font-weight: 700; padding: 0 3px">1</a></sup>.</p>
+<p style="margin: 0 0 18px">[המשך הביאור. כותרות המשנה, ההדגשות וגדלי האותיות יישמרו לפי עימוד הספר המקורי]<sup><a href="#fn-2" id="ref-2" style="text-decoration: none; font-family: 'Assistant', sans-serif; font-size: 0.7em; font-weight: 700; padding: 0 3px">2</a></sup>.</p>
+</section>
+
+<section id="v-2" style="padding-top: 40px">
+<h2 style="margin: 0 0 6px; font-family: 'Assistant', sans-serif; font-size: 0.75em; font-weight: 700; color: #7A3E22">פסוק ב</h2>
+<p style="margin: 0 0 22px; padding: 18px 22px; background: #E9E0CE; border-radius: 4px; font-size: 1.25em; line-height: 1.7; font-weight: 500">וְהָאָרֶץ הָיְתָה תֹהוּ וָבֹהוּ וְחֹשֶׁךְ עַל פְּנֵי תְהוֹם וְרוּחַ אֱלֹהִים מְרַחֶפֶת עַל פְּנֵי הַמָּיִם.</p>
+<p style="margin: 0 0 18px">[ביאור הספר לפסוק ב]<sup><a href="#fn-3" id="ref-3" style="text-decoration: none; font-family: 'Assistant', sans-serif; font-size: 0.7em; font-weight: 700; padding: 0 3px">3</a></sup>.</p>
+</section>
+
+<section id="v-3" style="padding-top: 40px">
+<h2 style="margin: 0 0 6px; font-family: 'Assistant', sans-serif; font-size: 0.75em; font-weight: 700; color: #7A3E22">פסוק ג</h2>
+<p style="margin: 0 0 22px; padding: 18px 22px; background: #E9E0CE; border-radius: 4px; font-size: 1.25em; line-height: 1.7; font-weight: 500">וַיֹּאמֶר אֱלֹהִים יְהִי אוֹר וַיְהִי אוֹר.</p>
+<p style="margin: 0 0 18px">[ביאור הספר לפסוק ג]</p>
+</section>
+
+<aside aria-label="הערות שוליים" style="margin-top: 56px; padding-top: 20px; border-top: 1px solid #CFC3AE; font-size: 0.8em; color: #3F3B36">
+<h2 style="margin: 0 0 14px; font-family: 'Assistant', sans-serif; font-size: 0.9em; font-weight: 700; color: #5B5650">הערות</h2>
+<ol style="margin: 0; padding-inline-start: 22px; display: flex; flex-direction: column; gap: 10px">
+<li id="fn-1">[הערת שוליים מתוך הספר] <a href="#ref-1" aria-label="חזרה לטקסט" style="text-decoration: none">↩</a></li>
+<li id="fn-2">[הערת שוליים מתוך הספר] <a href="#ref-2" aria-label="חזרה לטקסט" style="text-decoration: none">↩</a></li>
+<li id="fn-3">[הערת שוליים מתוך הספר] <a href="#ref-3" aria-label="חזרה לטקסט" style="text-decoration: none">↩</a></li>
+</ol>
+</aside>
+
+</article>
+
+<nav aria-label="מעבר בין שערים" style="max-width: 760px; margin: 64px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px">
+<a href="Parsha.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border: 1px solid #1F2A30; border-radius: 4px; color: #1F2A30; text-decoration: none; font-size: 17px; font-weight: 600">→ לכל שערי הפרשה</a>
+<a href="Reader.dc.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #1F2A30; border-radius: 4px; color: #F5F0E6; text-decoration: none; font-size: 17px; font-weight: 600">שער ב · גן עדן ←</a>
+</nav>
+
+</div>
+</main>
+
+<footer style="position: relative; z-index: 1; background: #172024; color: #B9AE9C">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 16px">
+<span>פשט ועומק במקרא</span>
+<span>[פרטי יצירת קשר]</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2100}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { size: 21 };
+}
+heb(n) {
+if (n === 15) return 'טו';
+if (n === 16) return 'טז';
+const ones = ['', 'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט'];
+const tens = ['', 'י', 'כ', 'ל'];
+return tens[Math.floor(n / 10)] + ones[n % 10];
+}
+renderVals() {
+const size = this.state.size;
+const verses = [];
+for (let i = 1; i <= 31; i++) {
+verses.push({ label: this.heb(i), anchor: 'v-' + i });
+}
+return {
+verses: verses,
+articleStyle: 'max-width: 760px; margin: 0 auto; font-family: \'Frank Ruhl Libre\', serif; line-height: 1.85; color: #1F232B; font-size: ' + size + 'px',
+smaller: () => this.setState({ size: Math.max(16, size - 2) }),
+larger: () => this.setState({ size: Math.min(31, size + 2) }),
+reset: () => this.setState({ size: 21 })
+};
+}
+}
+</script>
+</body>
+</html>

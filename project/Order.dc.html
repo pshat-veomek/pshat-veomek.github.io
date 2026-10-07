@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>הזמנת ספרים</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&amp;family=Assistant:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F0E6}
+a{color:#7A3E22}a:hover{color:#5A2B16}
+</style>
+</helmet>
+<div dir="rtl" style="font-family: 'Assistant', sans-serif; color: #1F232B; background: #F5F0E6; min-height: 100vh">
+
+<header style="background: #1F2A30; color: #F5F0E6">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; min-height: 76px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="Main.dc.html" style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 700; color: #F5F0E6; text-decoration: none; padding: 10px 0">פשט ועומק במקרא</a>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Main.dc.html" style="color: #E3D6BF; text-decoration: none; font-size: 17px; padding: 12px 14px">דף הבית</a>
+<a href="Books.dc.html" style="color: #E3D6BF; text-decoration: none; font-size: 17px; padding: 12px 14px">תוכן הספרים</a>
+<a href="Order.dc.html" style="color: #F5F0E6; text-decoration: none; font-size: 17px; font-weight: 600; padding: 12px 14px; border-bottom: 2px solid #D9A066">הזמנת ספרים</a>
+</nav>
+</div>
+</header>
+
+<section style="background: #E9E0CE">
+<div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 56px; box-sizing: border-box">
+<h1 style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: 56px; font-weight: 900">הזמנת ספרים</h1>
+<p style="margin: 14px 0 0; max-width: 620px; font-size: 20px; line-height: 1.6; color: #4A4640">מלאו את הפרטים וסמנו את הספרים המבוקשים. ניצור אתכם קשר לאישור ההזמנה.</p>
+</div>
+</section>
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 96px; box-sizing: border-box">
+
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="max-width: 760px; padding: 32px; background: #FBF8F2; border: 1px solid #DDD2BE; border-radius: 6px">
+<h2 style="margin: 0 0 10px; font-family: 'Frank Ruhl Libre', serif; font-size: 32px">תודה, ההזמנה התקבלה</h2>
+<p style="margin: 0 0 20px; font-size: 18px; color: #4A4640">ניצור אתכם קשר בהקדם לאישור ולתיאום המשלוח.</p>
+<button type="button" onClick="{{again}}" style="min-height: 48px; padding: 0 22px; border: 1px solid #1F2A30; background: transparent; color: #1F2A30; border-radius: 4px; font-family: inherit; font-size: 17px; font-weight: 600; cursor: pointer">הזמנה נוספת</button>
+</div>
+</sc-if>
+
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<form style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: 28px">פרטי המזמין</h2>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="f-name" style="font-size: 17px; font-weight: 600">שם מלא</label>
+<input id="f-name" type="text" autocomplete="name" required style="height: 48px; padding: 0 14px; border: 1px solid #B8AC97; border-radius: 4px; background: #FFFDF8; font-family: inherit; font-size: 18px; color: #1F232B">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="f-phone" style="font-size: 17px; font-weight: 600">טלפון</label>
+<input id="f-phone" type="tel" autocomplete="tel" dir="ltr" required style="height: 48px; padding: 0 14px; border: 1px solid #B8AC97; border-radius: 4px; background: #FFFDF8; font-family: inherit; font-size: 18px; color: #1F232B; text-align: right">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="f-email" style="font-size: 17px; font-weight: 600">דואר אלקטרוני</label>
+<input id="f-email" type="email" autocomplete="email" dir="ltr" required style="height: 48px; padding: 0 14px; border: 1px solid #B8AC97; border-radius: 4px; background: #FFFDF8; font-family: inherit; font-size: 18px; color: #1F232B; text-align: right">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="f-address" style="font-size: 17px; font-weight: 600">כתובת למשלוח</label>
+<textarea id="f-address" rows="3" autocomplete="street-address" required placeholder="רחוב, מספר בית, עיר, מיקוד" style="padding: 12px 14px; border: 1px solid #B8AC97; border-radius: 4px; background: #FFFDF8; font-family: inherit; font-size: 18px; color: #1F232B; resize: vertical"></textarea>
+</div>
+</div>
+
+<fieldset style="flex: 1.4 1 420px; min-width: 0; margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 28px">
+<legend style="padding: 0; margin-bottom: 20px; font-family: 'Frank Ruhl Libre', serif; font-size: 28px; font-weight: 700">אילו ספרים תרצו להזמין?</legend>
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<div>
+<div style="font-size: 16px; font-weight: 700; color: #7A3E22; margin-bottom: 10px">{{g.title}}</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px">
+<sc-for list="{{g.items}}" as="it" hint-placeholder-count="3">
+<label style="display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 14px; background: #FBF8F2; border: 1px solid #DDD2BE; border-radius: 4px; font-size: 17px; cursor: pointer">
+<input type="checkbox" name="books" value="{{it.name}}" style="width: 20px; height: 20px; accent-color: #1F2A30; margin: 0">
+<span>{{it.name}}</span>
+</label>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<div style="padding-top: 8px">
+<button type="button" onClick="{{send}}" style="min-height: 52px; padding: 0 34px; background: #1F2A30; color: #F5F0E6; border: 0; border-radius: 4px; font-family: inherit; font-size: 19px; font-weight: 700; cursor: pointer">שליחת ההזמנה</button>
+</div>
+</fieldset>
+
+</form>
+</sc-if>
+
+</div>
+
+<footer style="background: #172024; color: #B9AE9C">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 16px">
+<span>פשט ועומק במקרא</span>
+<span>[פרטי יצירת קשר]</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1700}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { sent: false };
+}
+renderVals() {
+const names = (list) => list.map((n) => ({ name: n }));
+return {
+sent: this.state.sent,
+notSent: !this.state.sent,
+send: () => this.setState({ sent: true }),
+again: () => this.setState({ sent: false }),
+groups: [
+{ title: 'ספרי הפרשות', items: names(['[פרשה א]', '[פרשה ב]', '[פרשה ג]', '[פרשה ד]', '[פרשה ה]', '[פרשה ו]', '[פרשה ז]', '[פרשה ח]', '[פרשה ט]']) },
+{ title: 'כרכי החידות', items: names(['חידות – כרך א', 'חידות – כרך ב', 'חידות – כרך ג', 'חידות – כרך ד', 'חידות – כרך ה']) },
+{ title: 'ספרים נוספים', items: names(['הגדה של פסח', 'ביאור על ההושענות – חלק א', 'ביאור על ההושענות – חלק ב']) }
+]
+};
+}
+}
+</script>
+</body>
+</html>

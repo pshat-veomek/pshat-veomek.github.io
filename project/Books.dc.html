@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>תוכן הספרים</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&amp;family=Assistant:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F0E6}
+a{color:#7A3E22}a:hover{color:#5A2B16}
+</style>
+</helmet>
+<div dir="rtl" style="font-family: 'Assistant', sans-serif; color: #1F232B; background: #F5F0E6; min-height: 100vh">
+
+<header style="background: #1F2A30; color: #F5F0E6">
+<div style="max-width: 1200px; margin: 0 auto; padding: 0 24px; min-height: 76px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<a href="Main.dc.html" style="font-family: 'Frank Ruhl Libre', serif; font-size: 26px; font-weight: 700; color: #F5F0E6; text-decoration: none; padding: 10px 0">פשט ועומק במקרא</a>
+<nav style="display: flex; flex-wrap: wrap; gap: 4px">
+<a href="Main.dc.html" style="color: #E3D6BF; text-decoration: none; font-size: 17px; padding: 12px 14px">דף הבית</a>
+<a href="Books.dc.html" style="color: #F5F0E6; text-decoration: none; font-size: 17px; font-weight: 600; padding: 12px 14px; border-bottom: 2px solid #D9A066">תוכן הספרים</a>
+<a href="Order.dc.html" style="color: #E3D6BF; text-decoration: none; font-size: 17px; padding: 12px 14px">הזמנת ספרים</a>
+</nav>
+</div>
+</header>
+
+<section style="background: #E9E0CE">
+<div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 56px; box-sizing: border-box">
+<h1 style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: 56px; font-weight: 900">תוכן הספרים</h1>
+<p style="margin: 14px 0 0; max-width: 620px; font-size: 20px; line-height: 1.6; color: #4A4640">בחרו ספר לפי החומש והפרשה כדי לעיין בשעריו ובביאור הפסוקים.</p>
+<nav style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px">
+<sc-for list="{{chumashim}}" as="c" hint-placeholder-count="5">
+<a href="#{{c.id}}" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid #1F2A30; border-radius: 999px; color: #1F2A30; text-decoration: none; font-size: 17px; font-weight: 600">{{c.name}}</a>
+</sc-for>
+</nav>
+</div>
+</section>
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 96px; box-sizing: border-box">
+<sc-for list="{{chumashim}}" as="c" hint-placeholder-count="5">
+<section id="{{c.id}}" style="padding-top: 56px">
+<div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid #CFC3AE; padding-bottom: 14px; margin-bottom: 28px">
+<h2 style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: 38px; font-weight: 700">ספר {{c.name}}</h2>
+<span style="font-size: 17px; color: #5B5650">{{c.count}}</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 32px">
+<sc-for list="{{c.books}}" as="b" hint-placeholder-count="2">
+<a href="Parsha.dc.html" style="display: flex; flex-direction: column; gap: 12px; color: #1F232B; text-decoration: none">
+<div style="{{b.coverStyle}}">
+<div style="position: absolute; inset: 10px; border: 1px solid rgba(245,240,230,0.45); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 22px 12px; text-align: center; color: #F5F0E6">
+<span style="font-size: 13px; letter-spacing: 0.08em">פשט ועומק במקרא</span>
+<span style="font-family: 'Frank Ruhl Libre', serif; font-size: 30px; font-weight: 700; line-height: 1.2">{{b.name}}</span>
+<span style="font-size: 12px; opacity: 0.8">[תמונת הכריכה]</span>
+</div>
+</div>
+<div>
+<div style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px; font-weight: 700">{{b.name}}</div>
+<div style="font-size: 16px; color: #5B5650; margin-top: 2px">לעיון בספר ←</div>
+</div>
+</a>
+</sc-for>
+</div>
+</section>
+</sc-for>
+</div>
+
+<footer style="background: #172024; color: #B9AE9C">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 16px">
+<span>פשט ועומק במקרא</span>
+<span>[פרטי יצירת קשר]</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+const base = 'position: relative; aspect-ratio: 2 / 3; border-radius: 3px 8px 8px 3px; box-shadow: 0 10px 24px rgba(31,26,20,0.22), inset -6px 0 0 rgba(0,0,0,0.18); background: ';
+const book = (name, color) => ({ name: name, coverStyle: base + color });
+const raw = [
+{ id: 'bereshit', name: 'בראשית', books: [book('[פרשה א]', '#2F4A52'), book('[פרשה ב]', '#6B3A26')] },
+{ id: 'shemot', name: 'שמות', books: [book('[פרשה ג]', '#3D3550'), book('[פרשה ד]', '#4E5A34')] },
+{ id: 'vayikra', name: 'ויקרא', books: [book('[פרשה ה]', '#7A5524')] },
+{ id: 'bamidbar', name: 'במדבר', books: [book('[פרשה ו]', '#23364A'), book('[פרשה ז]', '#5C2E33')] },
+{ id: 'devarim', name: 'דברים', books: [book('[פרשה ח]', '#3E5F5A'), book('[פרשה ט]', '#4A3B2A')] }
+];
+return {
+chumashim: raw.map((c) => ({ ...c, count: c.books.length === 1 ? 'ספר אחד' : c.books.length + ' ספרים' }))
+};
+}
+}
+</script>
+</body>
+</html>
