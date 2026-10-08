@@ -690,13 +690,34 @@ section.vsec:target, section.piyut-box:target { animation: target-flash 2.4s eas
 .wk-head { font-family: var(--font-display, var(--font-text)); font-size: 28px; line-height: 1.2; }
 .wk-book { font-size: 15px; color: var(--muted); }
 .wk-go { margin-top: 4px; font-size: 15px; font-weight: 700; color: var(--accent); }
-.hdr-search { display: none; }
+/* ---- header utilities: search · contact · order, set apart from the book tabs ---- */
+.site-header .wrap { row-gap: 0; }
+.site-nav { flex-basis: 100%; }
+.hdr-tools { display: flex; align-items: center; gap: 8px; margin-inline-start: auto; }
+.tool { display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 6px 15px; border: 1px solid rgba(217, 205, 182, .35); border-radius: 999px; color: var(--bar-muted); font-size: 15px; text-decoration: none; transition: background .15s, color .15s, border-color .15s; }
+.tool .ico { width: 17px; height: 17px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.tool:hover { color: var(--bar-fg); border-color: rgba(217, 205, 182, .7); background: rgba(255, 255, 255, .06); }
+.tool[aria-current="page"] { color: var(--bar-fg); border-color: var(--gold); background: rgba(217, 160, 102, .14); font-weight: 700; }
+.tool-order { background: var(--gold); border-color: var(--gold); color: var(--on-gold, #1F1A14); font-weight: 700; }
+.tool-order:hover, .tool-order[aria-current="page"] { background: #E6B57F; border-color: #E6B57F; color: var(--on-gold, #1F1A14); }
+.tool-order[aria-current="page"] { box-shadow: 0 0 0 2px var(--bar), 0 0 0 3px var(--gold); }
 @media (max-width: 1100px) {
-  .hdr-search { display: flex; align-items: center; justify-content: center; position: absolute; top: 14px; left: max(12px, env(safe-area-inset-left)); width: 44px; height: 44px; border-radius: 50%; color: var(--bar-fg); }
-  .hdr-search:hover, .hdr-search:focus-visible { background: rgba(255,255,255,.1); }
-  .hdr-search .ico { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
-  .site-nav a[href="search.html"] { display: none; }
+  .site-header .wrap { padding-top: 4px; }
+  .hdr-tools { flex-basis: 100%; justify-content: center; margin-inline-start: 0; padding-bottom: 6px; }
 }
+@media (max-width: 520px) {
+  .hdr-tools { gap: 6px; }
+  .tool { gap: 5px; min-height: 38px; padding: 5px 11px; font-size: 14px; }
+  .tool .ico { width: 15px; height: 15px; }
+}
+/* contact page */
+.contact-lead { font-size: 19px; line-height: 1.7; max-width: 60ch; margin: 0 0 26px; }
+.contact-form { display: flex; flex-direction: column; gap: 18px; max-width: 620px; }
+.contact-form .field textarea { min-height: 170px; line-height: 1.6; }
+.contact-send { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+.contact-send .form-msg { margin: 0; }
+.contact-form + .done, #contact-done { margin-block: 0 8px; }
+.contact-other { max-width: 620px; margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 16px; color: var(--muted); }
 /* approbations: one tile per rabbi (2 × 2) everywhere */
 .oval-hask .hask-row { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 640px; }
 @media (max-width: 560px) { .oval-hask .hask-row { grid-template-columns: 1fr; } }

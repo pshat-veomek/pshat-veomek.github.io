@@ -194,6 +194,54 @@
   }
 })();
 
+// contact form: sent by email to the author (FormSubmit), mailto as fallback
+(function () {
+  var TO = 'shlomo6963@gmail.com';
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var msg = document.getElementById('contact-msg'), done = document.getElementById('contact-done');
+  var btn = form.querySelector('button[type="submit"]');
+  function v(n) { return (form.elements[n].value || '').trim(); }
+  function mailto() {
+    return 'mailto:' + TO + '?subject=' + encodeURIComponent('פנייה מהאתר – ' + v('name')) +
+      '&body=' + encodeURIComponent(v('message') + '\n\n' + v('name') + '\n' + v('email'));
+  }
+  function showDone(how) {
+    form.hidden = true;
+    document.getElementById('contact-how').innerHTML = how === 'sent'
+      ? 'ההודעה התקבלה ותגיע אל הרב שלמה מונדשיין. התשובה תישלח לכתובת שמסרתם.'
+      : 'נפתחה הודעת דואר אלקטרוני מוכנה – יש ללחוץ בה על "שליחה". אם היא לא נפתחה, <a href="' + mailto() +
+        '">לחצו כאן</a> או כתבו ישירות לכתובת <a href="mailto:' + TO + '">' + TO + '</a>.';
+    done.hidden = false;
+    done.focus();
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    msg.textContent = 'שולח…';
+    btn.disabled = true;
+    var fallback = function () { btn.disabled = false; msg.textContent = ''; window.location.href = mailto(); showDone('mailto'); };
+    var data = {
+      _subject: 'פנייה מהאתר – ' + v('name'), _template: 'box', _captcha: 'false', _replyto: v('email'),
+      'שם': v('name'), 'דואר אלקטרוני': v('email'), 'הודעה': v('message')
+    };
+    var ctrl = 'AbortController' in window ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 12000);
+    try {
+      fetch('https://formsubmit.co/ajax/' + TO, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined
+      }).then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (j) { clearTimeout(timer); btn.disabled = false; msg.textContent = '';
+          if (j && (j.success === true || j.success === 'true')) showDone('sent'); else fallback(); })
+        .catch(function () { clearTimeout(timer); fallback(); });
+    } catch (err) { clearTimeout(timer); fallback(); }
+  });
+  document.getElementById('contact-again').addEventListener('click', function () {
+    form.reset(); form.hidden = false; done.hidden = true; form.elements.name.focus();
+  });
+})();
+
 // approbation letters: open in a dialog
 (function () {
   var dlg = document.getElementById('hask-dialog');
