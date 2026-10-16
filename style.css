@@ -759,3 +759,25 @@ section.vsec:target, section.piyut-box:target { animation: target-flash 2.4s eas
 /* riddle lines centred, as in the printed booklets */
 .riddle .rd-body, .riddle .rd-body p { text-align: center; }
 .riddle .rd-hint { text-align: center; }
+/* ---- tables from the books (printed as images in the PDFs; typed in tables/) ---- */
+.book-table { margin: 1.3em 0 1.7em; }
+.bt-scroll { overflow-x: auto; }
+.book-table table { width: 100%; border-collapse: collapse; background: var(--sheet); border: 1px solid var(--line); font-size: 0.92em; line-height: 1.6; }
+.book-table th, .book-table td { padding: 8px 12px; border-bottom: 1px solid var(--line); text-align: center; vertical-align: middle; }
+.book-table thead th { background: var(--bar); color: var(--bar-fg); font-family: var(--font-ui); font-weight: 600; font-size: 0.85em; }
+.book-table tbody th { background: var(--sand); font-family: var(--font-ui); font-weight: 700; font-size: 0.85em; white-space: nowrap; }
+.book-table th + th, .book-table th + td, .book-table td + td, .book-table td + th { border-inline-start: 1px solid var(--line); }
+.book-table tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--sand) 35%, var(--sheet)); }
+.book-table td.none { color: var(--muted); }
+.bt-cards { display: none; }
+@media (max-width: 640px) {
+  .book-table.has-cards .bt-scroll { display: none; }
+  .book-table.has-cards .bt-cards { display: grid; gap: 10px; }
+  .bt-card { background: var(--sheet); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .bt-card-h { background: var(--bar); color: var(--bar-fg); font-family: var(--font-ui); font-weight: 700; padding: 7px 12px; text-align: center; }
+  .bt-card dl { margin: 0; padding: 4px 12px 8px; display: grid; grid-template-columns: minmax(0, 40%) minmax(0, 1fr); gap: 0 12px; font-size: 0.9em; }
+  .bt-card dt, .bt-card dd { margin: 0; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .bt-card dt { font-family: var(--font-ui); font-size: 0.85em; font-weight: 600; color: var(--muted); }
+  .bt-card dd { text-align: center; }
+  .bt-card dl > :nth-last-child(-n+2) { border-bottom: 0; }
+}
