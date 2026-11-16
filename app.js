@@ -457,3 +457,24 @@ function heNorm(s, wantMap) {
   function ask() { if (!tick) { tick = true; requestAnimationFrame(set); } }
   set(); window.addEventListener('resize', ask); window.addEventListener('scroll', ask, { passive: true });
 })();
+
+/* PWA: service worker + install card (phones only, hidden once installed) */
+(function () {
+  if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('/sw.js').catch(function () {});
+  var sec = document.getElementById('install-sec'); if (!sec) return;
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  var phone = window.matchMedia('(max-width: 760px)').matches;
+  if (standalone || !phone) return;
+  var ua = navigator.userAgent, ios = /iPhone|iPad|iPod/.test(ua), deferred = null;
+  var btn = document.getElementById('install-btn'), help = document.getElementById('install-help');
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; });
+  window.addEventListener('appinstalled', function () { sec.hidden = true; });
+  sec.hidden = false;
+  btn.addEventListener('click', function () {
+    if (deferred) { deferred.prompt(); deferred.userChoice.then(function (r) { if (r.outcome === 'accepted') sec.hidden = true; deferred = null; }); return; }
+    help.innerHTML = ios
+      ? '<b>התקנה באייפון:</b><ol><li>לחצו על כפתור השיתוף <span aria-hidden="true">⎙</span> בתחתית הדפדפן (Safari).</li><li>בחרו "הוספה למסך הבית".</li><li>לחצו "הוסף".</li></ol>'
+      : '<b>התקנה באנדרואיד:</b><ol><li>פתחו את תפריט הדפדפן (שלוש הנקודות ⋮ למעלה).</li><li>בחרו "התקנת אפליקציה" או "הוספה למסך הבית".</li><li>אשרו.</li></ol>';
+    help.hidden = !help.hidden;
+  });
+})();
