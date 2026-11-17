@@ -850,3 +850,45 @@ span.ix-row a.ix-n:hover { text-decoration: underline; }
 .install-help { margin-top: 12px; background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-family: var(--font-ui); font-size: 15.5px; line-height: 1.6; }
 .install-help ol { margin: 6px 0 0; padding-inline-start: 20px; }
 @media (min-width: 761px) { .install-sec { display: none !important; } }
+
+/* ---- daily study (Kislev) ---- */
+.dy-cal { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; width: 84px; border: 1px solid var(--gold); border-radius: 6px; background: var(--sheet); font-family: var(--font-ui); overflow: hidden; }
+.dy-wd { width: 100%; text-align: center; font-size: 12.5px; font-weight: 700; background: var(--gold); color: var(--on-gold, #1F1A14); padding: 2px 0; }
+.dy-d { font-size: 30px; font-weight: 800; line-height: 1.15; color: var(--fg); padding-top: 2px; }
+.dy-m { font-size: 13px; font-weight: 600; color: var(--muted, #6b6152); padding-bottom: 4px; }
+.dy-intro { display: flex; gap: 26px; align-items: center; margin: 6px 0 18px; }
+.dy-intro img { width: 120px; height: auto; flex: 0 0 auto; filter: drop-shadow(0 8px 12px var(--shadow)); }
+.dy-intro .lede { font-size: 1.15em; margin-bottom: 8px; }
+.dy-today-wrap { text-align: center; margin: 10px 0 22px; }
+.dy-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.dy a { display: flex; align-items: center; gap: 18px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--sheet); color: var(--fg); text-decoration: none; }
+.dy a:hover { border-color: var(--accent); }
+.dy-t { flex: 1; display: flex; flex-direction: column; gap: 2px; font-family: var(--font-ui); }
+.dy-t b { font-size: 18px; }
+.dy-n { font-size: 13px; font-weight: 700; color: var(--accent); }
+.dy-p { font-size: 14.5px; color: var(--muted, #6b6152); }
+.dy-c { align-self: flex-start; margin-top: 3px; font-size: 13px; font-weight: 700; color: #7a4a10; background: #fbe7c2; border-radius: 99px; padding: 1px 10px; }
+.dy-go { flex: 0 0 auto; font-family: var(--font-ui); font-weight: 700; font-size: 15px; color: var(--accent); }
+.dy.past a { opacity: .62; }
+.dy.today a, .dy.next a { border: 2px solid var(--gold); box-shadow: 0 6px 20px rgba(160,110,40,.18); background: linear-gradient(90deg, var(--sheet), #fdf3e1); }
+.dy.today .dy-n::after { content: " · היום"; }
+.dy.next .dy-n::after { content: " · הלימוד הבא"; }
+.daily-sec { padding-top: 28px; padding-bottom: 0; }
+.daily-card { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px; background: var(--sheet); border: 1px solid var(--line); border-inline-start: 5px solid var(--gold); border-radius: 10px; box-shadow: 0 6px 20px rgba(60,40,20,.08); }
+.dc-main { display: flex; align-items: center; gap: 18px; color: var(--fg); text-decoration: none; }
+.dc-t { flex: 1; display: flex; flex-direction: column; gap: 2px; font-family: var(--font-ui); }
+.dc-k { font-size: 13.5px; font-weight: 700; color: var(--accent); }
+.dc-t b { font-size: 20px; }
+.dc-p { font-size: 14.5px; color: var(--muted, #6b6152); }
+.dc-go { font-family: var(--font-ui); font-weight: 800; color: var(--accent); }
+.dc-all { align-self: flex-start; font-family: var(--font-ui); font-size: 14px; font-weight: 700; }
+.daily-banner { border-radius: 18px 18px 0 0; background: #fbefd9; border-bottom: 1px solid var(--gold); font-family: var(--font-ui); font-size: 15px; padding: 9px 0; }
+.daily-banner .wrap { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; align-items: center; }
+.daily-banner a { font-weight: 700; }
+@media (max-width: 600px) {
+  .dy-intro { flex-direction: column; text-align: center; gap: 12px; }
+  .dy-intro img { width: 96px; }
+  .dy a { gap: 12px; padding: 10px 12px; }
+  .dy-go, .dc-go { display: none; }
+  .dy-cal { width: 70px; } .dy-d { font-size: 25px; }
+}
