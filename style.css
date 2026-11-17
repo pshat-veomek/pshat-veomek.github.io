@@ -892,3 +892,12 @@ span.ix-row a.ix-n:hover { text-decoration: underline; }
   .dy-go, .dc-go { display: none; }
   .dy-cal { width: 70px; } .dy-d { font-size: 25px; }
 }
+.dy { display: flex; align-items: center; gap: 10px; }
+.dy > a { flex: 1; min-width: 0; }
+.dy-mark { flex: 0 0 auto; font-family: var(--font-ui); font-size: 14px; font-weight: 700; cursor: pointer; border: 1.5px solid var(--gold); background: transparent; color: var(--accent); border-radius: 99px; padding: 6px 14px; white-space: nowrap; }
+.dy-mark.on { background: #2f6b3a; border-color: #2f6b3a; color: #fff; }
+.dy.dy-ok a { opacity: .7; } .dy.dy-ok .dy-cal { border-color: #2f6b3a; } .dy.dy-ok .dy-wd { background: #2f6b3a; color: #fff; }
+.dy-prog { text-align: center; font-family: var(--font-ui); font-weight: 700; color: #2f6b3a; margin: -8px 0 16px; }
+.daily-card .dy-mark { align-self: flex-start; }
+.daily-banner .dy-mark { padding: 3px 12px; font-size: 13.5px; }
+@media (max-width: 600px) { .dy { flex-direction: column; align-items: stretch; gap: 6px; } .dy .dy-mark { align-self: flex-start; margin-inline-start: 8px; } }

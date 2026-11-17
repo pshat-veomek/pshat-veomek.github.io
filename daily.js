@@ -13,6 +13,27 @@ window.MZD=[{"n": 1, "date": "2026-11-17", "wd": "שלישי", "heb": "ז' בכ�
     if (D[i].date > today) { cur = D[i]; break; }
   }
   var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+  var KEY = 'mzd-done', done = {};
+  try { (JSON.parse(localStorage.getItem(KEY) || '[]')).forEach(function (n) { done[n] = 1; }); } catch (e) {}
+  var save = function () { try { localStorage.setItem(KEY, JSON.stringify(Object.keys(done).map(Number))); } catch (e) {} };
+  var count = function () { return Object.keys(done).length; };
+  // a toggle button for lesson n; sync = callback after a change
+  var mark = function (n, sync) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'dy-mark';
+    var paint = function () {
+      var on = !!done[n];
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on);
+      b.innerHTML = on ? '✓ למדתי' : 'סמן: למדתי';
+    };
+    b.addEventListener('click', function () {
+      if (done[n]) delete done[n]; else done[n] = 1;
+      save(); paint(); if (sync) sync();
+    });
+    paint();
+    return b;
+  };
   var dayOf = function (d) { return d.heb.split(' ב'); };
 
   // home page card: from 10 days before the start until the last day
@@ -29,6 +50,7 @@ window.MZD=[{"n": 1, "date": "2026-11-17", "wd": "שלישי", "heb": "ז' בכ�
         '<span class="dc-p">"מנורת זהב" · עמ\' <span dir="ltr">' + cur.p + '</span>' + (cur.c ? ' · נר ' + cur.c + ' של חנוכה' : '') + '</span></span>' +
         '<span class="dc-go">ללימוד ←</span></a>' +
         '<a class="dc-all" href="limud-yomi.html">לוח הלימוד המלא</a></div>';
+      home.querySelector('.daily-card').appendChild(mark(cur.n));
       home.hidden = false;
     }
   }
@@ -41,6 +63,13 @@ window.MZD=[{"n": 1, "date": "2026-11-17", "wd": "שלישי", "heb": "ז' בכ�
       if (d < today) li.classList.add('past');
       if (cur && d === cur.date) li.classList.add(isToday ? 'today' : 'next');
     });
+    var prog = document.getElementById('dy-prog');
+    var upd = function () {
+      items.forEach(function (li) { li.classList.toggle('dy-ok', !!done[li.getAttribute('data-n')]); });
+      if (prog) prog.textContent = count() ? 'סימנת ' + count() + ' ימים שלמדת' + (count() === D.length ? ' – סיימת את כל הספר! 🎉' : '') : 'אפשר לסמן כל יום שלמדת – הסימון נשמר במכשיר שלך.';
+    };
+    items.forEach(function (li) { li.appendChild(mark(+li.getAttribute('data-n'), upd)); });
+    upd();
     var btn = document.getElementById('dy-today');
     if (btn && cur) {
       btn.href = cur.href;
@@ -60,6 +89,7 @@ window.MZD=[{"n": 1, "date": "2026-11-17", "wd": "שלישי", "heb": "ז' בכ�
       b.className = 'daily-banner';
       b.innerHTML = '<div class="wrap"><span>לימוד יומי לקראת חנוכה · ' + (isToday ? 'היום' : 'הלימוד הבא') + ': <b>' + esc(hit.t) +
         '</b>, עמ\' <span dir="ltr">' + hit.p + '</span></span> <a href="limud-yomi.html">לוח הלימוד ←</a></div>';
+      b.querySelector('.wrap').appendChild(mark(hit.n));
       if (main) main.insertBefore(b, main.firstChild);
     }
   }
