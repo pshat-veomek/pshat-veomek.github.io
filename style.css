@@ -901,3 +901,10 @@ span.ix-row a.ix-n:hover { text-decoration: underline; }
 .daily-card .dy-mark { align-self: flex-start; }
 .daily-banner .dy-mark { padding: 3px 12px; font-size: 13.5px; }
 @media (max-width: 600px) { .dy { flex-direction: column; align-items: stretch; gap: 6px; } .dy .dy-mark { align-self: flex-start; margin-inline-start: 8px; } }
+.dy-sep { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 14px; margin: 26px 0; padding: 10px 16px;
+  font-family: var(--font-ui); font-size: 15px; border-radius: 8px; background: #faf4e6; border: 1px dashed var(--gold); }
+.dy-sep-l { font-weight: 800; color: var(--accent); }
+.dy-sep-d { color: var(--muted, #6b6152); font-size: 14px; }
+.dy-sep.dy-end { background: #f3f0e8; }
+.dy-sep.cur { border-style: solid; border-width: 2px; background: #fbefd9; }
+.dy-sep-next { font-weight: 700; }
